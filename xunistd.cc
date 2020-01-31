@@ -4,7 +4,6 @@
 #include "fcntl.h"
 #include <vector>
 #include <sys/mman.h>
-#include "dmalloc.h"
 
 
 void *xmmap(void *addr, size_t len, int prot, int flags, fd_t fd, off_t off)

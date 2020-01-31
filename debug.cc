@@ -1,6 +1,5 @@
 #include "debug.hh"
 #include <iostream>
-#include "dmalloc.h"
 using namespace std;
 
 show_func_t::show_func_t(const char *file, size_t line, const char *func)

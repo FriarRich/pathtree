@@ -10,7 +10,6 @@ struct c_str
 {
   char* beg;
   char* end;
-  char buf[16];
   static const char null_str[ 1 ];
   void check() const {};
   c_str()

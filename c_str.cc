@@ -1,4 +1,3 @@
-#include "global.hh"
 #include "c_str.hh"
 #include <unistd.h>
 #include <string.h>

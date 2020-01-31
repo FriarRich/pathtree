@@ -1,4 +1,3 @@
-#include "global.hh"
 #include "xunistd.hh"
 #include "debug.hh"
 #include "stdarg.h"

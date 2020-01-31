@@ -1,4 +1,3 @@
-#include "global.hh"
 #include "mmap.hh"
 #include "debug.hh"
 #include "xunistd.hh"

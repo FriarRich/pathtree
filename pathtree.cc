@@ -1,4 +1,3 @@
-#include "global.hh"
 #include <signal.h>
 #include <unistd.h>
 

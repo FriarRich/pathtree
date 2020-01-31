@@ -1,4 +1,3 @@
-#include "global.hh"
 #include "debug.hh"
 #include <iostream>
 #include "dmalloc.h"

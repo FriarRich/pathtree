@@ -35,3 +35,10 @@ pathtree
 *.app
 *.dat
 *.[is]
+.gdb_history
+core
+dmalloc.h
+hexview
+logfile
+output
+tags

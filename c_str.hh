@@ -2,7 +2,7 @@
 #define c_str_hh c_str_hh
 
 #include <cassert>
-#include <ostream>
+#include <iostream>
 #include <string.h>
 #include <sys/types.h>
 
@@ -11,12 +11,10 @@ struct c_str
   char* beg;
   char* end;
   static const char null_str[ 1 ];
-  void check() const {};
   c_str()
       : beg( (char*)null_str )
       , end( (char*)null_str )
   {
-    check();
   };
   c_str( const char* b, const char* e = 0 )
       : beg( (char*)b )
@@ -27,7 +25,6 @@ struct c_str
     end = beg;
     while ( *end )
       ++end;
-    check();
   };
   c_str( char* b, char* e = 0 )
       : beg( b )
@@ -38,25 +35,21 @@ struct c_str
     end = beg;
     while ( *end )
       ++end;
-    check();
   };
   c_str( const char* b, size_t l )
       : beg( (char*)b )
       , end( (char*)b + l )
   {
-    check();
   };
   c_str( char* b, size_t l )
       : beg( b )
       , end( b + l )
   {
-    check();
   };
   c_str( const c_str& lhs )
       : beg( lhs.beg )
       , end( lhs.end )
   {
-    check();
   };
   template < size_t n >
   c_str( const char ( &str )[ n ] )
@@ -65,28 +58,23 @@ struct c_str
 
   size_t size() const
   {
-    check();
     return end - beg;
   };
   size_t len() const
   {
-    check();
     return end - beg;
   };
   char operator[]( size_t pos ) const
   {
-    check();
     return beg[ pos ];
   };
   explicit operator bool() const
   {
-    check();
     return beg < end;
   }
   bool operator!() const { return !bool( *this ); }
   c_str operator++( int )
   {
-    check();
     c_str res( *this );
     if ( beg < end )
       ++beg;
@@ -94,14 +82,12 @@ struct c_str
   };
   c_str& operator++()
   {
-    check();
     if ( beg < end )
       ++beg;
     return *this;
   };
   char operator*() const
   {
-    check();
     return *beg;
   };
   static int cmp( size_t lhs, size_t rhs );
@@ -127,8 +113,6 @@ inline int c_str::cmp( size_t lhs, size_t rhs )
 };
 inline int c_str::cmp( const c_str& lhs, const c_str& rhs )
 {
-  lhs.check();
-  rhs.check();
   int res = 0; // cmp(lhs.len(),rhs.len());
   if ( !res )
     res = lhs.len()-rhs.len();

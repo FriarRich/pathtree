@@ -71,7 +71,6 @@ void doit()
 int main( int, char**, const char** envp )
 {
   signal( SIGALRM, sigalrm );
-#if 1
   cout.sync_with_stdio( false );
 
 // Using time point and system_clock 
@@ -80,6 +79,5 @@ int main( int, char**, const char** envp )
   } else {
     doit<c_str>();
   };
-#endif
   return 0;
 };

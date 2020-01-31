@@ -1,0 +1,7 @@
+-fno-PIC
+-fverbose-asm
+-static
+-O3
+-pg
+-DDMALLOC
+-DDMALLOC_FUNC_CHECK

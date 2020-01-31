@@ -40,7 +40,7 @@ void doit()
   path_tree<str_t> paths;
 #if 1
   show_stats(paths);
-  mmap_t file( "locate.out" );
+  mmap_t file( "locate.dat" );
   auto b(begin(file)), e(end(file));
   while ( b != e )
   {

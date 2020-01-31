@@ -3,7 +3,7 @@ MAKEFLAGS= -rR
 DEPFLAGS= -MF $<.d -MT $@ -MD
 all:
 
-test: all
+test: all locate.dat
 	./pathtree
 
 cxx_exe:= pathtree
@@ -41,3 +41,7 @@ tags: $(patsubst %.cc,%.cc.d,$(cxx_src))
 	cat $(patsubst %.cc,%.cc.d,$(cxx_src)) | \
 		tr ' \\:' '\n' | sort -u | \
 		xargs ctags
+
+locate.dat:
+	locate / > $@.new
+	mv $@.new $@

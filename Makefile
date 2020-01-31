@@ -6,7 +6,7 @@ all:
 test: all locate.dat
 	./pathtree
 
-cxx_exe:= pathtree
+cxx_exe:= pathtree hexview
 cxx_ign:=
 cxx_src:= $(wildcard *.cc)
 cxx_lib:= $(filter-out $(patsubst %,%.cc,$(cxx_ign) $(cxx_exe)), $(cxx_src))
@@ -28,8 +28,6 @@ $(cxx_exe): %: %.cc cxxflags libutil.a
 	g++ @cxxflags $(STATIC)  -g -E $<    -o $<.i -fPIC -dD $(DEPFLAGS)
 	g++ @cxxflags $(STATIC)  -g -S $<.i  -o $<.s -fPIC
 	g++ @cxxflags $(STATIC)  -g    $<.s  -o $@   -fPIC -L. -lutil
-       
-#	-ldmalloccxx -lpthread
 
 include /dev/null $(wildcard *.d)
 

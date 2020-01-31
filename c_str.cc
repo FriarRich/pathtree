@@ -2,6 +2,7 @@
 #include "c_str.hh"
 #include <unistd.h>
 #include <string.h>
+#include "dmalloc.h"
 
 std::ostream &operator<<(std::ostream &lhs, const c_str &rhs)
 {

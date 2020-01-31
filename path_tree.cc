@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include "c_str.hh"
+#include "dmalloc.h"
 
 namespace nobody
 {

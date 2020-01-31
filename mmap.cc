@@ -5,6 +5,7 @@
 
 #include <fcntl.h>
 #include <sys/mman.h>
+#include "dmalloc.h"
 
 mmap_t::body_t::~body_t()
 {

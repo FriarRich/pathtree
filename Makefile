@@ -1,5 +1,5 @@
 MAKEFLAGS= -rR
-
+STATIC=
 DEPFLAGS= -MF $<.d -MT $@ -MD
 all:
 
@@ -20,14 +20,14 @@ libutil.a: $(cxx_obj)
 all: $(cxx_exe)
 
 $(cxx_obj): %.cc.o: %.cc cxxflags
-	g++ @cxxflags -static  -g -E $<    -o $<.i -fPIC -dD $(DEPFLAGS)
-	g++ @cxxflags -static  -g -S $<.i  -o $<.s -fPIC
-	g++ @cxxflags -static  -g -c $<.s  -o $@   -fPIC
+	g++ @cxxflags $(STATIC)  -g -E $<    -o $<.i -fPIC -dD $(DEPFLAGS)
+	g++ @cxxflags $(STATIC)  -g -S $<.i  -o $<.s -fPIC
+	g++ @cxxflags $(STATIC)  -g -c $<.s  -o $@   -fPIC
 
 $(cxx_exe): %: %.cc cxxflags libutil.a
-	g++ @cxxflags -static  -g -E $<    -o $<.i -fPIC -dD $(DEPFLAGS)
-	g++ @cxxflags -static  -g -S $<.i  -o $<.s -fPIC
-	g++ @cxxflags -static  -g    $<.s  -o $@   -fPIC -L. -lutil
+	g++ @cxxflags $(STATIC)  -g -E $<    -o $<.i -fPIC -dD $(DEPFLAGS)
+	g++ @cxxflags $(STATIC)  -g -S $<.i  -o $<.s -fPIC
+	g++ @cxxflags $(STATIC)  -g    $<.s  -o $@   -fPIC -L. -lutil
        
 #	-ldmalloccxx -lpthread
 

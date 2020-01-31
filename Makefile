@@ -33,7 +33,7 @@ include /dev/null $(wildcard *.d)
 
 clean:
 	rm -f $(cxx_exe) libutil.a tags gmon.out
-	rm -f *.cc.[isoad]
+	rm -f *.cc.[isod]
 
 tags: $(patsubst %.cc,%.cc.d,$(cxx_src))
 	cat $(patsubst %.cc,%.cc.d,$(cxx_src)) | \

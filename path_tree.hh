@@ -22,16 +22,17 @@ namespace nobody
       data_t( str_t key = str_t() )
           : key( key )
           , val( 0 ){};
-      void dump( ostream& str, const string& pre = string() );
+      void dump( vector<char>&, size_t );
       auto operator[]( const str_t& key )
       {
         assert( key.find( '/' ) == key.npos );
         return subs[ key ];
       };
     } data;
+    size_t bytes;
     size_t _size;
     path_tree()
-      : _size(0)
+      : _size(0), bytes(0)
     {
     };
     auto size() const { return _size; }
@@ -51,52 +52,17 @@ namespace nobody
           ++b;
         str_t kk( kb, ke );
         pos = &pos->subs[ kk ];
+        bytes++;
         if ( pos->key.size() == 0 )
         {
           pos->key = kk;
           _size++;
+          bytes+=kk.size();
         };
       };
       return pos->val;
     };
     void dump();
-  };
-  template<typename str_t>
-  void path_tree<str_t>::dump()
-  {
-    if ( getenv( "NO_DUMP" ) )
-      return;
-    if ( getenv( "USE_COUT" ) )
-    {
-      data.dump( cout );
-    }
-    else
-    {
-      ostringstream res;
-      data.dump( res );
-      string text = res.str();
-      size_t pos = 0;
-      cerr << text.size() << endl;
-      while ( pos < text.size() )
-      {
-        size_t res = xwrite( 1, text.c_str() + pos, text.size() - pos );
-        cerr << "res=" << res << endl;
-        pos += res;
-      };
-    }
-  };
-  template<typename str_t>
-  void path_tree<str_t>::data_t::dump( ostream& str, const string& pre )
-  {
-    str << pre;
-    if ( key.size() )
-      str << key << endl;
-    else
-      str << "<root>" << endl;
-    for ( auto sub : subs )
-    {
-      sub.second.dump( str, " " + pre );
-    };
   };
 } // namespace nobody
 using namespace nobody;

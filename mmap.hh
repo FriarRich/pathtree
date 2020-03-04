@@ -29,7 +29,9 @@ struct mmap_t
       : body( filename )
   {
   }
-
+  int size() const {
+    return body.size;
+  };
   iterator begin() { return body.data->begin(); };
   iterator end() { return begin() + body.size; };
 

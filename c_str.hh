@@ -141,7 +141,7 @@ inline const char* begin( const c_str& cont )
 };
 inline char* end( c_str& cont )
 {
-  return cont.beg;
+  return cont.end;
 };
 inline char* begin( c_str& cont )
 {

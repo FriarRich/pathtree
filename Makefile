@@ -6,7 +6,7 @@ all:
 test: all locate.dat
 	./pathtree
 
-cxx_exe:= pathtree
+cxx_exe:= pathtree randomize
 cxx_ign:=
 cxx_src:= $(wildcard *.cc)
 cxx_lib:= $(filter-out $(patsubst %,%.cc,$(cxx_ign) $(cxx_exe)), $(cxx_src))
